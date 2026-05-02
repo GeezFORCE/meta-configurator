@@ -4,6 +4,8 @@ on:
     branches:
       - main
       - develop
+      - shacl-bridge-integration-feat
+  workflow_dispatch:
 permissions:
   contents: write
 jobs:
