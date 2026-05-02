@@ -23,6 +23,7 @@ export class MenuItems {
 
   private readonly showSchemaSelectionDialog: () => void;
   private readonly showImportCsvDialog: () => void;
+  private readonly showImportShaclDialog: () => void;
   private readonly showSnapshotDialog: () => void;
   private readonly showCodeGenerationDialog: (schemaMode: boolean) => void;
   private readonly showDataExportDialog: (schemaMode: boolean) => void;
@@ -34,6 +35,7 @@ export class MenuItems {
   constructor(
     showSchemaSelectionDialog: () => void,
     showImportCsvDialog: () => void,
+    showImportShaclDialog: () => void,
     showSnapshotDialog: () => void,
     showCodeGenerationDialog: (schemaMode: boolean) => void,
     showDataExportDialog: (schemaMode: boolean) => void,
@@ -44,6 +46,7 @@ export class MenuItems {
   ) {
     this.showSchemaSelectionDialog = showSchemaSelectionDialog;
     this.showImportCsvDialog = showImportCsvDialog;
+    this.showImportShaclDialog = showImportShaclDialog;
     this.showSnapshotDialog = showSnapshotDialog;
     this.showCodeGenerationDialog = showCodeGenerationDialog;
     this.showDataExportDialog = showDataExportDialog;
@@ -191,6 +194,11 @@ export class MenuItems {
           {
             label: 'JSON Schema',
             command: openImportSchemaDialog,
+          },
+          {
+            label: 'Import SHACL',
+            icon: 'fa-solid fa-diagram-project',
+            command: this.showImportShaclDialog,
           },
         ],
       },
