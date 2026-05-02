@@ -196,10 +196,11 @@ export class MenuItems {
         items: [
           {
             label: 'JSON Schema',
+            icon: 'fa-solid fa-file-code',
             command: openImportSchemaDialog,
           },
           {
-            label: 'Import SHACL',
+            label: 'SHACL',
             icon: 'fa-solid fa-diagram-project',
             command: this.showImportShaclDialog,
           },
@@ -216,7 +217,7 @@ export class MenuItems {
               downloadFile(useDataSource().userSchemaData.value.title ?? 'untitled', true),
           },
           {
-            label: 'SHACL...',
+            label: 'SHACL',
             icon: 'fa-solid fa-diagram-project',
             command: this.showExportShaclDialog,
           },
