@@ -2,6 +2,8 @@ name: Build and Deploy
 on:
   push:
     branches:
+      - main
+      - develop
       - shacl-bridge-integration-feat
 permissions:
   contents: write
