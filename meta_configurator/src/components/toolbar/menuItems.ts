@@ -14,6 +14,7 @@ import {openImportSchemaDialog} from '@/components/toolbar/importFile';
 import {extractInlinedSchemaDefinitions} from '@/components/toolbar/extractSchemaDefinitions';
 import {resolveSchemaReferences} from '@/components/toolbar/resolveSchemaReferences.ts';
 import {bundleSchema} from '@/components/toolbar/bundleSchema.ts';
+import {exportShaclAsTurtle, exportShaclAsJsonLd} from '@/components/toolbar/exportShaclFile';
 
 /**
  * Helper class that contains the menu items for the top menu bar.
@@ -205,7 +206,24 @@ export class MenuItems {
       {
         label: 'Download Schema',
         icon: 'fa-solid fa-download',
-        command: () => downloadFile(useDataSource().userSchemaData.value.title ?? 'untitled', true),
+        items: [
+          {
+            label: 'JSON Schema',
+            icon: 'fa-solid fa-file-code',
+            command: () =>
+              downloadFile(useDataSource().userSchemaData.value.title ?? 'untitled', true),
+          },
+          {
+            label: 'SHACL (Turtle)',
+            icon: 'fa-solid fa-diagram-project',
+            command: () => exportShaclAsTurtle(),
+          },
+          {
+            label: 'SHACL (JSON-LD)',
+            icon: 'fa-solid fa-diagram-project',
+            command: () => exportShaclAsJsonLd(),
+          },
+        ],
       },
       {
         label: 'Utility...',
