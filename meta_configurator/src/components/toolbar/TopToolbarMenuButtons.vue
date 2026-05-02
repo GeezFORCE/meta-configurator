@@ -21,6 +21,7 @@ const emit = defineEmits<{
   (e: 'show-schema-selection-dialog'): void;
   (e: 'show-import-csv-dialog'): void;
   (e: 'show-import-shacl-dialog'): void;
+  (e: 'show-export-shacl-dialog'): void;
   (e: 'show-snapshot-dialog'): void;
   (e: 'show-codegen-dialog', schemaMode: boolean): void;
   (e: 'show-data-export-dialog', schemaMode: boolean): void;
@@ -34,6 +35,7 @@ const topMenuBar = new MenuItems(
   showSchemaSelectionDialog,
   showCsvImportDialog,
   showShaclImportDialog,
+  showShaclExportDialog,
   showSnapshotDialog,
   showCodeGenerationDialog,
   showDataExportDialog,
@@ -53,6 +55,10 @@ function showCsvImportDialog() {
 
 function showShaclImportDialog() {
   emit('show-import-shacl-dialog');
+}
+
+function showShaclExportDialog() {
+  emit('show-export-shacl-dialog');
 }
 
 function showSnapshotDialog() {

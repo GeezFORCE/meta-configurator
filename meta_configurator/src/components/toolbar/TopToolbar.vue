@@ -22,6 +22,7 @@ const emit = defineEmits<{
   (e: 'show-schema-selection-dialog'): void;
   (e: 'show-import-csv-dialog'): void;
   (e: 'show-import-shacl-dialog'): void;
+  (e: 'show-export-shacl-dialog'): void;
   (e: 'show-snapshot-dialog'): void;
   (e: 'show-about-dialog'): void;
   (e: 'show-codegen-dialog', schemaMode: boolean): void;
@@ -44,6 +45,10 @@ function showCsvImportDialog() {
 
 function showShaclImportDialog() {
   emit('show-import-shacl-dialog');
+}
+
+function showShaclExportDialog() {
+  emit('show-export-shacl-dialog');
 }
 
 function showSnapshotDialog() {
@@ -112,6 +117,7 @@ useMagicKeys({
           @show-data-export-dialog="schemaMode => showDataExportDialog(schemaMode)"
           @show-import-csv-dialog="() => showCsvImportDialog()"
           @show-import-shacl-dialog="() => showShaclImportDialog()"
+          @show-export-shacl-dialog="() => showShaclExportDialog()"
           @show-schema-selection-dialog="() => showSchemaSelectionDialog()"
           @show-snapshot-dialog="() => showSnapshotDialog()"
           @show-data-mapping-dialog="() => showDataMappingDialog()"
@@ -182,6 +188,7 @@ useMagicKeys({
           @show-data-export-dialog="schemaMode => showDataExportDialog(schemaMode)"
           @show-import-csv-dialog="() => showCsvImportDialog()"
           @show-import-shacl-dialog="() => showShaclImportDialog()"
+          @show-export-shacl-dialog="() => showShaclExportDialog()"
           @show-schema-selection-dialog="() => showSchemaSelectionDialog()"
           @show-snapshot-dialog="() => showSnapshotDialog()"
           @show-data-mapping-dialog="() => showDataMappingDialog()"

@@ -14,7 +14,6 @@ import {openImportSchemaDialog} from '@/components/toolbar/importFile';
 import {extractInlinedSchemaDefinitions} from '@/components/toolbar/extractSchemaDefinitions';
 import {resolveSchemaReferences} from '@/components/toolbar/resolveSchemaReferences.ts';
 import {bundleSchema} from '@/components/toolbar/bundleSchema.ts';
-import {exportShaclAsTurtle, exportShaclAsJsonLd} from '@/components/toolbar/exportShaclFile';
 
 /**
  * Helper class that contains the menu items for the top menu bar.
@@ -25,6 +24,7 @@ export class MenuItems {
   private readonly showSchemaSelectionDialog: () => void;
   private readonly showImportCsvDialog: () => void;
   private readonly showImportShaclDialog: () => void;
+  private readonly showExportShaclDialog: () => void;
   private readonly showSnapshotDialog: () => void;
   private readonly showCodeGenerationDialog: (schemaMode: boolean) => void;
   private readonly showDataExportDialog: (schemaMode: boolean) => void;
@@ -37,6 +37,7 @@ export class MenuItems {
     showSchemaSelectionDialog: () => void,
     showImportCsvDialog: () => void,
     showImportShaclDialog: () => void,
+    showExportShaclDialog: () => void,
     showSnapshotDialog: () => void,
     showCodeGenerationDialog: (schemaMode: boolean) => void,
     showDataExportDialog: (schemaMode: boolean) => void,
@@ -48,6 +49,7 @@ export class MenuItems {
     this.showSchemaSelectionDialog = showSchemaSelectionDialog;
     this.showImportCsvDialog = showImportCsvDialog;
     this.showImportShaclDialog = showImportShaclDialog;
+    this.showExportShaclDialog = showExportShaclDialog;
     this.showSnapshotDialog = showSnapshotDialog;
     this.showCodeGenerationDialog = showCodeGenerationDialog;
     this.showDataExportDialog = showDataExportDialog;
@@ -214,14 +216,9 @@ export class MenuItems {
               downloadFile(useDataSource().userSchemaData.value.title ?? 'untitled', true),
           },
           {
-            label: 'SHACL (Turtle)',
+            label: 'SHACL...',
             icon: 'fa-solid fa-diagram-project',
-            command: () => exportShaclAsTurtle(),
-          },
-          {
-            label: 'SHACL (JSON-LD)',
-            icon: 'fa-solid fa-diagram-project',
-            command: () => exportShaclAsJsonLd(),
+            command: this.showExportShaclDialog,
           },
         ],
       },

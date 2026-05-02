@@ -21,6 +21,7 @@ import {useErrorService} from '@/utility/errorServiceInstance';
 import {fetchExternalContent} from '@/utility/fetchExternalContent';
 import RmlMappingDialog from '@/components/toolbar/dialogs/rml-mapping/RmlMappingDialog.vue';
 import ImportShaclDialog from '@/components/toolbar/dialogs/shaclimport/ImportShaclDialog.vue';
+import ExportShaclDialog from '@/components/toolbar/dialogs/shaclexport/ExportShaclDialog.vue';
 
 const props = defineProps<{
   currentMode: SessionMode;
@@ -112,6 +113,10 @@ function showShaclImportDialog() {
   shaclImportDialog.value?.show();
 }
 
+function showShaclExportDialog() {
+  shaclExportDialog.value?.show();
+}
+
 function showSnapshotDialog() {
   snapshotDialog.value?.show();
 }
@@ -156,6 +161,7 @@ const showInitialDialog = () => {
 
 const csvImportDialog = ref();
 const shaclImportDialog = ref();
+const shaclExportDialog = ref();
 const snapshotDialog = ref();
 const codeGenerationDialog = ref();
 const dataExportDialog = ref();
@@ -199,6 +205,8 @@ defineExpose({
 
   <ImportShaclDialog ref="shaclImportDialog" />
 
+  <ExportShaclDialog ref="shaclExportDialog" />
+
   <SaveSnapshotDialog ref="snapshotDialog" />
 
   <CodeGenerationDialog ref="codeGenerationDialog" />
@@ -225,6 +233,7 @@ defineExpose({
     @show-schema-selection-dialog="() => showSchemaSelectionDialog()"
     @show-import-csv-dialog="() => showCsvImportDialog()"
     @show-import-shacl-dialog="() => showShaclImportDialog()"
+    @show-export-shacl-dialog="() => showShaclExportDialog()"
     @show-snapshot-dialog="() => showSnapshotDialog()"
     @show-data-mapping-dialog="() => showDataMappingDialog()"
     @show-rml-mapping-dialog="() => showRmlMappingDialog()"
